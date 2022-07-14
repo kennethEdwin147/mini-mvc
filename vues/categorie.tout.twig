@@ -1,0 +1,16 @@
+{% extends "base.twig" %}
+
+{% block main %}
+
+<pre>
+    {{ dump(categories) }}
+</pre>
+
+{% for categorie in categories %}
+    <article>
+        <p> {{ categorie.cat_nom }}</p>
+    
+    </article>
+{% endfor %}
+
+{% endblock main %}

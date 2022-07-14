@@ -1,4 +1,6 @@
 <?php
+include_once 'vendor/autoload.php';
+
 // Pilote de l'application (ou site Web)
 
 // Inclure les fichiers de config

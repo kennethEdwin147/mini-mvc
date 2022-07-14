@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include_once 'vendor/autoload.php';
 
 // Pilote de l'application (ou site Web)
@@ -33,12 +35,15 @@ class Routeur
       else if(file_exists("gabarits/$nomFichier")) {
         include("gabarits/$nomFichier");
       }
+      else if(file_exists("lib/$nomFichier")) {
+        include("lib/$nomFichier");
+      }
     });
   }
   
   public function invoquerRoute() {
     $module = "accueil"; 
-    $action = "index";
+    $action = MODULE_DEFAUT;
     $params = "";
     $routeTableau = explode('/', $this->route);
     
@@ -63,7 +68,7 @@ class Routeur
       $controleur->$action($params);
     }
     else {
-      $controleur = new Controleur('', 'accueil', 'index');
+      $controleur = new Controleur('', MODULE_DEFAUT, 'index');
     }
   }
 }
